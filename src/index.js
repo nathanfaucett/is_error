@@ -1,4 +1,4 @@
-var isObjectLike = require("is_object_like");
+var isObject = require("is_object");
 
 
 var objectToString = Object.prototype.toString;
@@ -7,10 +7,10 @@ var objectToString = Object.prototype.toString;
 module.exports = isError;
 
 
-function isError(obj) {
+function isError(value) {
     return (
-        isObjectLike(obj) &&
-        typeof(obj.message) === "string" &&
-        objectToString.call(obj) === "[object Error]"
+        isObject(value) &&
+        typeof(value.message) === "string" &&
+        objectToString.call(value) === "[object Error]"
     ) || false;
 }
